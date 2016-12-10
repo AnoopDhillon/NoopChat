@@ -12,9 +12,10 @@
 </head>
 
 <body>
-              <div id="header">
-              <h1>Welcome to NoopChat</h1>
-            </div>
+  <div id="header">
+    <h1>Welcome to NoopChat</h1>
+    <!--<div id="alerts"></div>-->
+  </div>
   <div id="wrapper">
     <!-- Page Content -->
     <div id="page-content-wrapper">
@@ -47,37 +48,19 @@
     <ul class="sidebar-nav" id="user-list">
       <li class="sidebar-brand">
         <a href="#">
-                        Start Bootstrap
-                    </a>
+          NoopChat
+        </a>
       </li>
       <!--<li>
         <a href="#">Dashboard</a>
       </li>
-      <li>
-        <a href="#">Shortcuts</a>
-      </li>
-      <li>
-        <a href="#">Overview</a>
-      </li>
-      <li>
-        <a href="#">Events</a>
-      </li>
-      <li>
-        <a href="#">About</a>
-      </li>
-      <li>
-        <a href="#">Services</a>
-      </li>
-      <li>
-        <a href="#">Contact</a>
-      </li>-->
     </ul>
   </div>
   <!-- /#sidebar-wrapper -->
 
   <script>
         var socket = io();
-
+        var activeUsers = [];
         $('form').submit(function(){
             socket.emit('chat message', $('#m').val());
             $('#m').val('');
@@ -89,10 +72,17 @@
           while(!nickname){
             nickname = prompt("Please Enter a nickname:");
           }
-          console.log(nickname);
+          activeUsers.push(nickname);
           socket.emit('login', nickname); //Send a Nickname
-          $('#user-list').append($('<li><a href="#">').text(nickname));
-          
+          activeUsers.forEach(function(u){
+            $("#user-list").append(
+              $("<li>", {}).append(
+                $("<a>", { href: "#"}).text(
+                  nickname
+                )
+              )
+            );
+          });
         }); 
 
         socket.on('chat message', function(Nickname, msg){
@@ -102,10 +92,11 @@
         });
 
         socket.on('alert', function(msg){
-          $('#alerts').prepend($('<div class="alert alert-info" id="info">' + msg + '</div>'));
-          setTimeout(function() {
-            $('#info').remove();
-          }, 2000);
+          // $('#alerts').prepend($('<div class="alert alert-info" id="info">' + msg + '</div>'));
+          // setTimeout(function() {
+          //   $('#info').remove();
+          // }, 2000);
+          $('#messages').append($('<li>').text(msg));
         });
     </script>
 </body>
