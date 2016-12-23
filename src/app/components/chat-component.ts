@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ChatService } from '../services/chat-service';
+import { SocketService } from '../services/socket-service';
 
 @Component({
     moduleId: module.id,
@@ -14,19 +14,15 @@ export class ChatComponent implements OnInit {
 
      sendMessage($event){
          $event.preventDefault();
-         this.chatService.sendMessage(this.message);
+         this.socketService.sendMessage(this.message);
          this.message = '';
      }
 
     ngOnInit() {
-        // this.chatService.getMessages()
-        // .subscribe( data => {
-        //     this.messageHistory.push(data);
-        // });
-        this.chatService.messages.subscribe( message => {
+        this.socketService.messages.subscribe( message => {
                 this.messageHistory.push(message);
         })
     }
 
-    constructor(private chatService: ChatService){};
+    constructor(private socketService: SocketService){};
 }

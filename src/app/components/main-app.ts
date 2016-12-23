@@ -6,8 +6,5 @@ import { Component } from '@angular/core';
     templateUrl: '/app/templates/main-app.html'
 })
 export class MainApp {
-    title: string = "HELLO";
-    subtitle: string = "hello";
-
     constructor() {};
 }

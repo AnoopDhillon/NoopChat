@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { MainApp } from './components/main-app';
 import { ChatComponent } from './components/chat-component';
-import { ChatService } from './services/chat-service';
+import { SocketService } from './services/socket-service';
 
 @NgModule({
     imports: [
@@ -17,7 +17,9 @@ import { ChatService } from './services/chat-service';
         MainApp,
         ChatComponent
     ],
-    providers: [ ChatService ],
+    providers: [ 
+        SocketService
+    ],
     bootstrap: [
         MainApp
     ]
