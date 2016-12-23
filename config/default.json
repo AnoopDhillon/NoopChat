@@ -1,0 +1,9 @@
+{
+    "port": 3000,
+    "db": {
+        "host": "172.25.217.21",
+        "user": "sb",
+        "password": "sb",
+        "database": "schoolbank"
+    }
+}

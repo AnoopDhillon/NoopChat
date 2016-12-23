@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/app/models/message.ts"],"names":[],"mappings":";AAAA;IAAA;IAGA,CAAC;IAAD,cAAC;AAAD,CAHA,AAGC,IAAA;AAHY,0BAAO","file":"message.js","sourcesContent":["export class Message {\r\n    sender: string;\r\n    content: string;\r\n}"]}
