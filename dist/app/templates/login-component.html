@@ -1,0 +1,19 @@
+<div id = "background">
+    <div class="login-page">
+    <div class="form">
+        <form class="register-form" #f="ngForm" (ngSubmit)="onRegister(f)" novalidate>
+            <input type="text" placeholder="username" name="username" ngModel required #username="ngModel"/>
+            <input type="password" placeholder="password" name="password" ngModel required #password="ngModel"/>
+            <input type="text" placeholder="email address" name="email" ngModel required #email="ngModel"/>
+            <button>create</button>
+            <p class="message">Already registered? <a href="#">Sign In</a></p>
+        </form>
+        <form class="login-form" #f="ngForm" (ngSubmit)="onLogin(f)" novalidate>
+            <input type="text" placeholder="username" name="username" ngModel required #username="ngModel"/>
+            <input type="password" placeholder="password" name="password" ngModel required #password="ngModel"/>
+            <button>login</button>
+            <p class="message">Not registered? <a href="#">Create an account</a></p>
+        </form>
+    </div>
+    </div>
+</div>
