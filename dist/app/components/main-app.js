@@ -11,8 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var MainApp = (function () {
     function MainApp() {
-        this.title = "HELLO";
-        this.subtitle = "hello";
     }
     ;
     return MainApp;
@@ -21,7 +19,7 @@ MainApp = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'main-app',
-        templateUrl: '/app/templates/main-app.html'
+        templateUrl: '../templates/main-app.html'
     }),
     __metadata("design:paramtypes", [])
 ], MainApp);

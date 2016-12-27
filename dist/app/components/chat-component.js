@@ -9,24 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var chat_service_1 = require("../services/chat-service");
+var socket_service_1 = require("../services/socket-service");
+var router_1 = require("@angular/router");
 var ChatComponent = (function () {
-    function ChatComponent(chatService) {
-        this.chatService = chatService;
+    function ChatComponent(socketService, _router) {
+        this.socketService = socketService;
+        this._router = _router;
         this.messageHistory = [];
     }
     ChatComponent.prototype.sendMessage = function ($event) {
         $event.preventDefault();
-        this.chatService.sendMessage(this.message);
+        this.socketService.sendMessage(this.message);
         this.message = '';
     };
     ChatComponent.prototype.ngOnInit = function () {
         var _this = this;
-        // this.chatService.getMessages()
-        // .subscribe( data => {
-        //     this.messageHistory.push(data);
-        // });
-        this.chatService.messages.subscribe(function (message) {
+        this.socketService.messages.subscribe(function (message) {
             _this.messageHistory.push(message);
         });
     };
@@ -39,7 +37,8 @@ ChatComponent = __decorate([
         selector: 'chat-component',
         templateUrl: '../templates/chat-component.html'
     }),
-    __metadata("design:paramtypes", [chat_service_1.ChatService])
+    __metadata("design:paramtypes", [socket_service_1.SocketService,
+        router_1.Router])
 ], ChatComponent);
 exports.ChatComponent = ChatComponent;
 

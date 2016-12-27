@@ -3,6 +3,7 @@ import * as express from 'express';
 import * as socketIO from 'socket.io';
 import * as http from 'http';
 import * as path from 'path';
+import * as loginModel from '../app/models/login';
 
 let port = config.get('port');
 let app = express();
@@ -30,25 +31,23 @@ var sid = socket.id;
     });
 
     socket.on('chat message', function(msg){
-        console.log(msg);
         messageHistory.push({
             name: username,
             message: msg
         });
         io.emit('chat message', username, msg);
-        console.log(username + msg);
     });
 
     socket.on('disconnect', function(){
         io.emit('alert', username + ' has disconnected');
     });
 
-    socket.on('login', function(nickName){
-        console.log('login detected');
-        username = nickName;
+    socket.on('login', function(data){
+        username = data.username;
         Users.push({
             id: sid,
-            name: nickName
+            name: data.username,
+            password: data.password
         });
         socket.broadcast.emit('alert', username + ' has connected');
     });

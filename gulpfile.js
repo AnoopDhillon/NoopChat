@@ -84,11 +84,11 @@ gulp.watch('src/**/*.ts', function () {
 });
 
 // watch for style changes
-// gulp.watch('src/styles/**/*',
-//   function () {
-//     runSequence('css');
-//   }
-// );
+gulp.watch('src/styles/**/*',
+  function () {
+    runSequence('copy');
+  }
+);
 
 // Watch for HTML, IMG, JS changes
 gulp.watch(['src/**/*.html', 'src/res/**/*', 'src/scripts/**/*'],

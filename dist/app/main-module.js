@@ -12,9 +12,11 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var platform_browser_1 = require("@angular/platform-browser");
 var http_1 = require("@angular/http");
+var routes_1 = require("./routes");
 var main_app_1 = require("./components/main-app");
 var chat_component_1 = require("./components/chat-component");
-var chat_service_1 = require("./services/chat-service");
+var login_component_1 = require("./components/login-component");
+var socket_service_1 = require("./services/socket-service");
 var MainModule = (function () {
     function MainModule() {
     }
@@ -23,6 +25,7 @@ var MainModule = (function () {
 MainModule = __decorate([
     core_1.NgModule({
         imports: [
+            routes_1.routing,
             platform_browser_1.BrowserModule,
             http_1.HttpModule,
             http_1.JsonpModule,
@@ -30,9 +33,12 @@ MainModule = __decorate([
         ],
         declarations: [
             main_app_1.MainApp,
-            chat_component_1.ChatComponent
+            chat_component_1.ChatComponent,
+            login_component_1.LoginComponent
         ],
-        providers: [chat_service_1.ChatService],
+        providers: [
+            socket_service_1.SocketService
+        ],
         bootstrap: [
             main_app_1.MainApp
         ]
