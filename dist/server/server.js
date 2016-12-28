@@ -14,7 +14,7 @@ var messageHistory = [];
 app.get('/app|res|styles|scripts|server|lib', function (req, res) {
     res.sendFile(req.path, { root: 'dist' });
 });
-app.get('/', function (req, res) {
+app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, '/../index.html'));
 });
 io.on('connection', function (socket) {

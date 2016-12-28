@@ -8,7 +8,7 @@
 body { font: 13px Helvetica, Arial}
 #header {margin-left : 250px; padding-left : 35px; padding-top: 20px; height: 80px}
 /*#alerts {height: 100%; top: 20px;}*/
-#messageBar { background: #000; padding: 3px; position: fixed; bottom: 0; right: 0; left:0; margin-left: 250px;}
+#messageBar { background: lightseagreen; padding: 3px; position: fixed; bottom: 0; right: 0; left:0; margin-left: 250px;}
 #m { border: 0; padding: 10px; width: 90%;}
 
 #messages { list-style-type: none; margin: 0; padding: 0; position: fixed; right: 20px; left: 270px; bottom: 40px; top:85px; overflow-y: auto}
@@ -45,7 +45,7 @@ body { font: 13px Helvetica, Arial}
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: lightseagreen;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -77,6 +77,7 @@ body { font: 13px Helvetica, Arial}
     margin: 0;
     padding: 0;
     list-style: none;
+    background: lightseagreen;
 }
 
 .sidebar-nav li {
@@ -87,13 +88,13 @@ body { font: 13px Helvetica, Arial}
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: white;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.2);
+    color: black;
+    background: lightblue;
 }
 
 .sidebar-nav li a:active,
@@ -108,7 +109,7 @@ body { font: 13px Helvetica, Arial}
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color: #999999;
+    color: white;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {

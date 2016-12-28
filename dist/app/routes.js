@@ -13,7 +13,7 @@ var routes = [
     },
     {
         path: '**',
-        component: login_component_1.LoginComponent
+        redirectTo: 'LoginComponent'
     }
 ];
 exports.routing = router_1.RouterModule.forRoot(routes);

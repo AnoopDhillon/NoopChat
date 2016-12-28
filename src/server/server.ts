@@ -19,7 +19,7 @@ app.get('/app|res|styles|scripts|server|lib',
  res.sendFile(req.path, { root: 'dist' });
 });
 
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '/../index.html'));
 });
 
