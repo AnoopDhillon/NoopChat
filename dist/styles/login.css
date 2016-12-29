@@ -9,6 +9,10 @@
     right: 0px;
 }
 
+.alert{
+  color: red;
+}
+
 .login-page {
   width: 360px;
   padding: 8% 0 0;

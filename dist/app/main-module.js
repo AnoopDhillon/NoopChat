@@ -17,6 +17,8 @@ var main_app_1 = require("./components/main-app");
 var chat_component_1 = require("./components/chat-component");
 var login_component_1 = require("./components/login-component");
 var socket_service_1 = require("./services/socket-service");
+var auth_service_1 = require("./services/auth-service");
+var auth_guard_1 = require("../auth-guard");
 var MainModule = (function () {
     function MainModule() {
     }
@@ -37,7 +39,9 @@ MainModule = __decorate([
             login_component_1.LoginComponent
         ],
         providers: [
-            socket_service_1.SocketService
+            socket_service_1.SocketService,
+            auth_service_1.AuthService,
+            auth_guard_1.AuthGuard
         ],
         bootstrap: [
             main_app_1.MainApp

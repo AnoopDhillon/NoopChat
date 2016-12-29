@@ -1,6 +1,8 @@
 "use strict";
 var Message = (function () {
-    function Message() {
+    function Message(_uname, _msg) {
+        this.sender = _uname;
+        this.content = _msg;
     }
     return Message;
 }());

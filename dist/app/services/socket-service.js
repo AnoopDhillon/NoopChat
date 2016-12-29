@@ -1,6 +1,8 @@
 "use strict";
 var Subject_1 = require("rxjs/Subject");
 var SocketService = (function () {
+    // private _alerts: Subject<any> = new Subject();
+    // public alerts: Observable<any>;
     function SocketService() {
         var _this = this;
         this.url = 'http://localhost:3000';
@@ -10,6 +12,10 @@ var SocketService = (function () {
         this.socket.on('chat message', function (username, msg) {
             _this._messages.next({ username: username, msg: msg });
         });
+        // this.alerts = this._alerts.asObservable();
+        // this.socket.on('alert', (msg) => {
+        //     this._alerts.next({msg});
+        // });
     }
     SocketService.prototype.sendMessage = function (msg) {
         if (this.socket !== null) {

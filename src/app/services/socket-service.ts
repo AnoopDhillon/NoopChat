@@ -9,6 +9,8 @@ export class SocketService {
     private socket;
     private _messages: Subject<any> = new Subject();
     public messages: Observable<any>;
+    // private _alerts: Subject<any> = new Subject();
+    // public alerts: Observable<any>;
 
     constructor() {
         this.messages = this._messages.asObservable();
@@ -16,6 +18,10 @@ export class SocketService {
         this.socket.on('chat message', (username, msg) => {
             this._messages.next({ username, msg });
         });
+        // this.alerts = this._alerts.asObservable();
+        // this.socket.on('alert', (msg) => {
+        //     this._alerts.next({msg});
+        // });
     }
 
     sendMessage(msg): boolean {

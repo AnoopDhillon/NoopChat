@@ -7,6 +7,8 @@ import { MainApp } from './components/main-app';
 import { ChatComponent } from './components/chat-component';
 import { LoginComponent } from './components/login-component';
 import { SocketService } from './services/socket-service';
+import { AuthService } from './services/auth-service';
+import { AuthGuard } from '../auth-guard';
 
 @NgModule({
     imports: [
@@ -22,7 +24,9 @@ import { SocketService } from './services/socket-service';
         LoginComponent
     ],
     providers: [
-        SocketService
+        SocketService,
+        AuthService,
+        AuthGuard
     ],
     bootstrap: [
         MainApp

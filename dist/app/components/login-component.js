@@ -10,21 +10,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var socket_service_1 = require("../services/socket-service");
+var auth_service_1 = require("../services/auth-service");
 var router_1 = require("@angular/router");
 var login_1 = require("../models/login");
 var LoginComponent = (function () {
-    function LoginComponent(socketService, _router) {
+    function LoginComponent(socketService, _router, _authService) {
         this.socketService = socketService;
         this._router = _router;
+        this._authService = _authService;
+        this.storedUserKey = 'rememberUsername';
+        this.loginError = false;
     }
+    ;
+    LoginComponent.prototype.ngOnInit = function () {
+        var authUser = JSON.parse(localStorage.getItem('authenticatedUser'));
+        if (authUser && Date.now() < authUser.expiresAt) {
+            this._router.navigate(['home']);
+        }
+    };
     LoginComponent.prototype.onLogin = function (f) {
-        this.socketService.sendLogin(new login_1.LoginCredentials(f.value.username, f.value.password));
-        this._router.navigate(['home']);
+        var _this = this;
+        this._authService.logIn(f.value.username, f.value.password)
+            .subscribe(function (flag) {
+            if (flag) {
+                _this.socketService.sendLogin(new login_1.LoginCredentials(f.value.username, f.value.password));
+                localStorage.setItem(_this.storedUserKey, '');
+                _this._router.navigate(['home']);
+                _this.loginError = false;
+            }
+            else {
+                _this.loginError = true;
+            }
+        }, function (err) {
+            _this.loginError = true;
+        });
     };
     LoginComponent.prototype.onRegister = function (f) {
         console.log(f.value);
     };
-    ;
     return LoginComponent;
 }());
 LoginComponent = __decorate([
@@ -35,7 +58,8 @@ LoginComponent = __decorate([
         styleUrls: ['../../styles/login.css']
     }),
     __metadata("design:paramtypes", [socket_service_1.SocketService,
-        router_1.Router])
+        router_1.Router,
+        auth_service_1.AuthService])
 ], LoginComponent);
 exports.LoginComponent = LoginComponent;
 

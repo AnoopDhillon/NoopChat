@@ -8,6 +8,10 @@ var routes = [
         component: login_component_1.LoginComponent
     },
     {
+        path: 'login',
+        component: login_component_1.LoginComponent
+    },
+    {
         path: 'home',
         component: chat_component_1.ChatComponent
     },
