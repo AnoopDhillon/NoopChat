@@ -18,7 +18,7 @@ var chat_component_1 = require("./components/chat-component");
 var login_component_1 = require("./components/login-component");
 var socket_service_1 = require("./services/socket-service");
 var auth_service_1 = require("./services/auth-service");
-var auth_guard_1 = require("../auth-guard");
+var auth_guard_1 = require("./components/auth-guard");
 var MainModule = (function () {
     function MainModule() {
     }
